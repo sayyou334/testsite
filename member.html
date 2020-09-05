@@ -1,0 +1,94 @@
+<!--member.html-->
+<!doctype html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	
+	<script>
+	function sendit()
+	{
+		//이름 체크하기
+		if(document.myform.name.value=="")
+		{alert("이름을 입력해주세요.");
+		document.myform.name.focus();
+		return false;	//else를 안써주어도 된다. 함수를 끝내는 역할
+		}
+		
+		//아이디 길이제한 체크하기  
+		if(document.myform.userid.value.length < 5)
+		{alert("아이디는 5글자 이상 입력해주세요.");
+		document.myform.userid.select();
+		return false;
+		}
+		
+		//비밀번호 제한 체크하기		
+		if(document.myform.passwd.value.length < 6)
+		{alert("비밀번호를 6자 이상 입력해주세요.");
+		document.myform.passwd.select();
+		return false;
+		}
+		
+		//비밀번호와 확인 비밀번호가 같은지 체크하기
+		if(document.myform.passwd.value != document.myform.passwdcheck.value)
+		{alert("확인 비밀번호가 다릅니다.");
+		document.myform.passwdcheck.value="";
+		document.myform.passwdcheck.select();
+		return false;		
+		}
+		
+		//이메일 @ 유무 체크하기
+		if(document.myform.email.value.indexOf("@")==-1)	//@가 없다는 뜻
+		{alert("이메일 형식이 잘못되었습니다.");
+		return false;
+		}
+		
+		document.myform.submit();
+	}
+	</script>
+	</head>
+	
+	<body>
+	<center>
+	<br>
+		<h2>❤🙋🏻‍♀️ 회 원 가 입 🙋🏻‍♂️❤</h2>
+		<font color="#DDDDDF">회원가입을 환영합니다. *표시는 필수 입력 사항입니다.</font></p>
+		
+	<table border="1" width="750" height="350" cellpadding="10" cellspacing="0">
+	<form name="myform" action="mem_regist.asp" method="post">
+		<tr>
+			<th bgcolor="#373161"><font color="white">회원이름</font>
+			<td><input type="text" size="15" name="name"> [실명을 입력해주세요]*
+		</tr>
+		<tr>
+			<th bgcolor="#373161"><font color="white">UserID</font>
+			<td><input type="text" size="15" name="userid">	[5자 이상 영문, 숫자로만 구성해주세요]*
+		</tr>
+		<tr>
+			<th bgcolor="#373161"><font color="white">비밀번호</font>
+			<td><input type="password" size="15" name="passwd"> [비밀번호 6자 이상]*
+		</tr>
+		<tr>
+			<th bgcolor="#373161"><font color="white">비밀번호 확인</font>
+			<td><input type="password" size="15" name="passwdcheck"> *
+		</tr>
+		<tr>
+			<th bgcolor="#373161"><font color="white">E-mail</font>
+			<td><input type="text" size="25" name="email"> *
+		</tr>
+		<tr>
+			<th bgcolor="#373161"><font color="white">전화번호</font>
+			<td><input type="text" size="25" name="phone"> *
+		</tr>
+		<tr>
+			<th bgcolor="#373161"><font color="white">주 소</font>
+			<td><input type="text" size="65" name="addr">
+		</tr>
+		<tr>
+			<th colspan="2" bgcolor="#8E89B2">
+			<input type="button" value="회원가입" onclick="sendit()">
+			<input type="button" value="Reset" onclick="reset()">
+		</tr>
+	</form>
+	</table>
+	</body>
+</html>
